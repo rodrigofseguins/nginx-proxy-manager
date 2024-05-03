@@ -1,13 +1,14 @@
 version: '3.8'
 services:
-  app:
+  ngx:
     image: 'jc21/nginx-proxy-manager:latest'
     restart: unless-stopped
+    container_name: ngx
     ports:
       # These ports are in format <host-port>:<container-port>
       - '80:80' # Public HTTP Port
       - '443:443' # Public HTTPS Port
-      - '81:81' # Admin Web Port
+      - '82:82' # Admin Web Port
       # Add any other Stream port you want to expose
       # - '21:21' # FTP
 
@@ -23,3 +24,8 @@ services:
     volumes:
       - ./data:/data
       - ./letsencrypt:/etc/letsencrypt
+    networks:
+      - pinet-internal
+networks:
+  pinet-internal:
+    external: true
