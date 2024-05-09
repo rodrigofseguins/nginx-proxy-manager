@@ -25,7 +25,7 @@ services:
       - ./data:/data
       - ./letsencrypt:/etc/letsencrypt
     networks:
-      - nutecnet #Pra casa pinet-internal
+      - pinet #Pra casa pinet-internal
 networks:
-  nutecnet:
+  pinet:
     external: true
